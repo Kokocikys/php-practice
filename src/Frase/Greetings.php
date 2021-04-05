@@ -4,11 +4,18 @@ namespace App\Frase;
 
 require 'vendor/autoload.php';
 
+/**
+ * Class Greetings
+ * @package App\Frase
+ */
 class Greetings
 {
-    public function sayHello()
+    /**
+     * @return string
+     */
+    public function sayHello(): string
     {
         $generator = \Nubs\RandomNameGenerator\All::create();
-        echo "Hello, ".$generator->getName()."!";
+        return "Hello, " . $generator->getName() . "!";
     }
 }

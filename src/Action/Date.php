@@ -2,10 +2,17 @@
 
 namespace App\Action;
 
+/**
+ * Class Date
+ * @package App\Action
+ */
 class Date
 {
-    public function showDate()
+    /**
+     * @return string
+     */
+    public function showDate(): string
     {
-        echo "Current date: ".date("jS \of F, Y");
+        return date("jS \of F, Y");
     }
 }

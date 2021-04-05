@@ -6,6 +6,6 @@ class Date
 {
     public function showDate()
     {
-        echo date("Y-m-d H:i:s");
+        echo "Current date: ".date("jS \of F, Y");
     }
 }

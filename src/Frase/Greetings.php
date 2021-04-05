@@ -2,10 +2,13 @@
 
 namespace App\Frase;
 
+require 'vendor/autoload.php';
+
 class Greetings
 {
     public function sayHello()
     {
-        echo "Hello, user!";
+        $generator = \Nubs\RandomNameGenerator\All::create();
+        echo "Hello, ".$generator->getName()."!";
     }
 }

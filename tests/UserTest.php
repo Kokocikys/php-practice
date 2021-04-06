@@ -11,7 +11,7 @@ class UserTest extends TestCase
     /**
      * @var \App\User\User
      */
-    private User $user;
+    protected User $user;
 
     /**
      *
@@ -33,7 +33,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @dataProvider userProvider
+     * @dataProvider dataProvider
      * @param $age
      */
     public function testAge($age): void
@@ -41,7 +41,7 @@ class UserTest extends TestCase
         self::assertSame($age, $this->user->getAge());
     }
 
-    public function userProvider(): array
+    public function dataProvider(): array
     {
         return [
             [33],

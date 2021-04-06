@@ -13,21 +13,12 @@ class UserTest extends TestCase
      */
     protected User $user;
 
-    /**
-     *
-     */
     protected function setUp(): void
     {
         $this->user = new App\User\User();
         $this->user->setAge(33);
-        $this->user->setEmail('example@test.com');
-        $this->user->setName('Ilya');
-        $this->user->setPassword("228");
     }
 
-    /**
-     *
-     */
     protected function tearDown(): void
     {
     }
@@ -41,10 +32,14 @@ class UserTest extends TestCase
         self::assertSame($age, $this->user->getAge());
     }
 
+    /**
+     * @return \int[][]
+     */
     public function dataProvider(): array
     {
         return [
-            [33],
+            "Success" => [33],
+//            "Failed" => [54],
         ];
     }
 }

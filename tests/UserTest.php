@@ -1,5 +1,6 @@
 <?php
 
+use App\User\User;
 use \PHPUnit\Framework\TestCase;
 
 /**
@@ -10,7 +11,7 @@ class UserTest extends TestCase
     /**
      * @var \App\User\User
      */
-    private $user;
+    private User $user;
 
     /**
      *
@@ -33,6 +34,7 @@ class UserTest extends TestCase
 
     /**
      * @dataProvider userProvider
+     * @param $age
      */
     public function testAge($age): void
     {
@@ -43,7 +45,6 @@ class UserTest extends TestCase
     {
         return [
             [33],
-            [54],
         ];
     }
 }

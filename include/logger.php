@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Europe/Minsk');
+
 $log = new Monolog\Logger("PageLoad");
 
 $log->pushHandler(new Monolog\Handler\StreamHandler(

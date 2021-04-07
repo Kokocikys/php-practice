@@ -14,6 +14,8 @@ require 'include/logger.php';
 
 $greetings = new App\Frase\Greetings();
 $showDate = new App\Action\Date();
+$test = new App\Shit\ShityLogic();
+$test->setRes("010");
 ?>
 <div>
     <div>
@@ -23,5 +25,10 @@ $showDate = new App\Action\Date();
         Current date: <?= $showDate->showDate() ?>
     </div>
 </div>
+
+<div style="font-size: 32px;">
+    <?= $test->lastChar() ?>
+</div>
+
 </body>
 </html>

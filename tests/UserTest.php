@@ -38,8 +38,7 @@ class UserTest extends TestCase
     public function dataProvider(): array
     {
         return [
-            "Success" => [33],
-//            "Failed" => [54],
+            "Success" => [33]
         ];
     }
 }

@@ -2,39 +2,55 @@
 
 namespace App\Shit;
 
+use Koko\Http\Client;
+use Koko\Mailer\Mailer;
+
 require 'vendor/autoload.php';
 
+/**
+ * @property \Koko\Mailer\Mailer mailer
+ * @property \Koko\Http\Client httpClient
+ */
 class ShityLogic
 {
-    protected string $res;
+    protected Mailer $mailer;
+    protected Client $httpClient;
+    protected string $var;
+
+    public function __construct(Mailer $mailer, Client $httpClient)
+    {
+        $this->mailer = $mailer;
+        $this->httpClient = $httpClient;
+    }
 
     /**
      * @return string
      */
     public function getRes(): string
     {
-        return $this->res;
+        return $this->var;
     }
 
     /**
-     * @param string $res
+     * @param string $str
      */
-    public function setRes(string $res): void
+    public function setRes(string $str): void
     {
-        $this->res = $res;
+        $this->var = $str;
     }
 
-    public function lastChar(): string
+    public function lastChar($str): string
     {
-        $var = $this->res;
+        $someData = $this->httpClient->getData();
 
-        if (substr($var, -1) === "1") {
-            $var = '$var last char is 1';
+        if (substr($str, -1) === "1" && $someData != '') {
+            $result = '$str last char is 1';
         } else {
-            $var = '$var last char is 0';
+            $result = '$str last char is 0';
         }
 
-        $this->res = $var;
-        return $this->res;
+        $this->mailer->send();
+
+        return $result;
     }
 }

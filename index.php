@@ -9,13 +9,17 @@
 </head>
 <body>
 <?php
+
+use Koko\Http\Client;
+
 require 'vendor/autoload.php';
 require 'include/logger.php';
 
 $greetings = new App\Frase\Greetings();
 $showDate = new App\Action\Date();
-$test = new App\Shit\ShityLogic();
-$test->setRes("010");
+$mailer = new Koko\Mailer\Standard();
+$httpClient = new Client();
+$test = new App\Shit\ShityLogic($mailer, $httpClient);
 ?>
 <div>
     <div>
@@ -27,7 +31,7 @@ $test->setRes("010");
 </div>
 
 <div style="font-size: 32px;">
-    <?= $test->lastChar() ?>
+    <?= $test->lastChar("010") ?>
 </div>
 
 </body>

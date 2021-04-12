@@ -2,7 +2,7 @@
 
 namespace App\Frase;
 
-require 'vendor/autoload.php';
+require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 /**
  * Class Greetings

@@ -4,9 +4,6 @@ namespace App\Shit;
 
 use Koko\Http\Client;
 use Koko\Mailer\Mailer;
-
-require 'vendor/autoload.php';
-
 /**
  * @property \Koko\Mailer\Mailer mailer
  * @property \Koko\Http\Client httpClient

@@ -1,3 +1,14 @@
+<?php
+
+require $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
+require 'include/logger.php';
+
+$greetings = new App\Frase\Greetings();
+$showDate = new App\Action\Date();
+$mailer = new Koko\Mailer\Standard();
+$httpClient = new Koko\Http\Client();
+$test = new App\Shit\ShityLogic($mailer, $httpClient);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,19 +19,6 @@
     <title>PHP practice</title>
 </head>
 <body>
-<?php
-
-use Koko\Http\Client;
-
-require 'vendor/autoload.php';
-require 'include/logger.php';
-
-$greetings = new App\Frase\Greetings();
-$showDate = new App\Action\Date();
-$mailer = new Koko\Mailer\Standard();
-$httpClient = new Client();
-$test = new App\Shit\ShityLogic($mailer, $httpClient);
-?>
 <div>
     <div>
         <?= $greetings->sayHello() ?>
@@ -32,6 +30,10 @@ $test = new App\Shit\ShityLogic($mailer, $httpClient);
 
 <div style="font-size: 32px;">
     <?= $test->lastChar("010") ?>
+</div>
+
+<div>
+    <a href="/anotherPage/index.php">Go to another page!</a>
 </div>
 
 </body>

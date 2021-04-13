@@ -4,10 +4,20 @@ namespace App\Logger;
 
 require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
+/**
+ * Class Logger
+ * @package App\Logger
+ */
 class Logger
 {
+    /**
+     * @var
+     */
     protected static $instance;
 
+    /**
+     * @return mixed
+     */
     public static function getLogger()
     {
         if (!self::$instance) {
@@ -16,7 +26,10 @@ class Logger
         return self::$instance;
     }
 
-    private static function configureInstance()
+    /**
+     *
+     */
+    private static function configureInstance(): void
     {
         date_default_timezone_set('Europe/Minsk');
 
@@ -28,6 +41,9 @@ class Logger
         self::$instance = $logger;
     }
 
+    /**
+     * @param $pageURL
+     */
     public function logLoadedPage($pageURL): void
     {
         self::getLogger()->addInfo("Successful load", array("Page" => $pageURL));

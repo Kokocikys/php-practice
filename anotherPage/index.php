@@ -1,6 +1,10 @@
 <?
+
 require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
+
 $greetings = new App\Frase\Greetings();
+$logger = new App\Logger\Logger();
+$logger->logLoadedPage(__FILE__);
 ?>
 <!doctype html>
 <html lang="en">

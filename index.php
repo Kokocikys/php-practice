@@ -1,13 +1,14 @@
 <?php
 
 require $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
-require 'include/logger.php';
 
 $greetings = new App\Frase\Greetings();
 $showDate = new App\Action\Date();
 $mailer = new Koko\Mailer\Standard();
 $httpClient = new Koko\Http\Client();
 $test = new App\Shit\ShityLogic($mailer, $httpClient);
+$logger = new App\Logger\Logger();
+$logger->logLoadedPage(__FILE__);
 ?>
 <!doctype html>
 <html lang="en">

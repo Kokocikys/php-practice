@@ -1,3 +1,1 @@
-<?php
-
-echo "I was included here!";
+<?php echo "I was included!";

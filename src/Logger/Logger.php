@@ -2,6 +2,8 @@
 
 namespace App\Logger;
 
+use Monolog\Handler\StreamHandler;
+
 require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 /**
@@ -34,7 +36,7 @@ class Logger
         date_default_timezone_set('Europe/Minsk');
 
         $logger = new \Monolog\Logger("PageLoad");
-        $logger->pushHandler( new \Monolog\Handler\StreamHandler(
+        $logger->pushHandler( new StreamHandler(
             $_SERVER['DOCUMENT_ROOT']."/logs/info.log",
             \Monolog\Logger::INFO
         ));
@@ -46,6 +48,6 @@ class Logger
      */
     public function logLoadedPage($pageURL): void
     {
-        self::getLogger()->addInfo("Successful load", array("Page" => $pageURL));
+        self::getLogger()->info("Successful load", array("Page" => $pageURL));
     }
 }

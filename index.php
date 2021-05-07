@@ -1,12 +1,8 @@
 <?php
-
 require $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
 
 $greetings = new App\Frase\Greetings();
 $showDate = new App\Action\Date();
-//$mailer = new Koko\Mailer\Standard();
-//$httpClient = new Koko\Http\Client();
-//$test = new App\Shit\ShityLogic($mailer, $httpClient);
 $logger = new App\Logger\Logger();
 $logger->logLoadedPage(__FILE__);
 ?>
@@ -28,10 +24,6 @@ $logger->logLoadedPage(__FILE__);
         Current date: <?= $showDate->showDate() ?>
     </div>
 </div>
-
-<!--<div style="font-size: 32px;">-->
-<!--    --><?//= $test->lastChar("010") ?>
-<!--</div>-->
 
 <div>
     <a href="/anotherPage/index.php">Go to another page!</a>

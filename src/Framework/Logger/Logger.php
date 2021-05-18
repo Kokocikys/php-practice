@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Logger;
+namespace Framework\Logger;
 
 use Monolog\Handler\StreamHandler;
 
-require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+require $_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php';
 
 /**
  * Class Logger
- * @package App\Logger
+ * @package Framework\Logger
  */
 class Logger
 {
-    /**
-     * @var
-     */
     protected static $instance;
 
     /**
@@ -28,9 +25,6 @@ class Logger
         return self::$instance;
     }
 
-    /**
-     *
-     */
     private static function configureInstance(): void
     {
         date_default_timezone_set('Europe/Minsk');
@@ -48,6 +42,6 @@ class Logger
      */
     public function logLoadedPage($pageURL): void
     {
-        self::getLogger()->info("Successful load", array("Page" => $pageURL));
+        self::getLogger()->info("Successful load", array("Page" => $_SERVER["HTTP_HOST"].$pageURL));
     }
 }

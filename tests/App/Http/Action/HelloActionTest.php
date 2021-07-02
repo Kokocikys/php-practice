@@ -16,22 +16,18 @@ class HelloActionTest extends TestCase
 		$response = $action( $request );
 
 		self::assertEquals( 200, $response->getStatusCode() );
-		self::assertEquals( 'Hello, Guest!', $response->getBody()
-		                                              ->getContents()
-		);
+		self::assertEquals( 'Hello, Guest!', $response->getBody()->getContents() );
 	}
 
-	public function testJohn()
+	public function testIlya()
 	{
 		$action = new HelloAction();
 
 		$request = ( new ServerRequest() )
-			->withQueryParams( [ 'name' => 'John' ] );
+			->withQueryParams( [ 'name' => 'Ilya' ] );
 
 		$response = $action( $request );
 
-		self::assertEquals( 'Hello, John!', $response->getBody()
-		                                             ->getContents()
-		);
+		self::assertEquals( 'Hello, Ilya!', $response->getBody()->getContents() );
 	}
 }

@@ -4,7 +4,7 @@ namespace Framework\Logger;
 
 use Monolog\Handler\StreamHandler;
 
-require 'D:\OpenServer\domains\php-practice.my\vendor\autoload.php';
+require $_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php';
 
 /**
  * Class Logger
@@ -30,11 +30,7 @@ class Logger
 		date_default_timezone_set( 'Europe/Minsk' );
 
 		$logger = new \Monolog\Logger( "PageLoad" );
-		$logger->pushHandler( new StreamHandler(
-			                      $_SERVER[ 'DOCUMENT_ROOT' ] . "/logs/info.log",
-			                      \Monolog\Logger::INFO
-		                      )
-		);
+		$logger->pushHandler( new StreamHandler( $_SERVER[ 'DOCUMENT_ROOT' ] . "/logs/info.log", \Monolog\Logger::INFO ) );
 		self::$instance = $logger;
 	}
 

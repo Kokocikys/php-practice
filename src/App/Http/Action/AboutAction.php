@@ -8,6 +8,6 @@ class AboutAction
 {
     public function __invoke()
     {
-        return new HtmlResponse('I am a simple site');
+        return new HtmlResponse('I am a simple site!');
     }
 }

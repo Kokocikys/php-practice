@@ -2,12 +2,16 @@
 
 namespace Framework\Http\Router\Exception;
 
-class RouteNotFoundException extends \LogicException
+use JetBrains\PhpStorm\Pure;
+use LogicException;
+use Throwable;
+
+class RouteNotFoundException extends LogicException
 {
 	private string $name;
 	private array  $params;
 
-	public function __construct( $name, array $params, \Throwable $previous = null )
+	#[Pure] public function __construct( $name, array $params, Throwable $previous = null )
 	{
 		parent::__construct( 'Route "' . $name . '" not found.', 0, $previous );
 		$this->name = $name;

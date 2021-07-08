@@ -2,13 +2,15 @@
 
 namespace Framework\Http\Router\Exception;
 
+use JetBrains\PhpStorm\Pure;
+use LogicException;
 use Psr\Http\Message\ServerRequestInterface;
 
-class RequestNotMatchedException extends \LogicException
+class RequestNotMatchedException extends LogicException
 {
 	private ServerRequestInterface $request;
 
-	public function __construct( ServerRequestInterface $request )
+	#[Pure] public function __construct( ServerRequestInterface $request )
 	{
 		parent::__construct( 'Matches not found.' );
 		$this->request = $request;

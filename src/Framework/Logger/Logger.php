@@ -15,7 +15,7 @@ class Logger
 	protected static $instance;
 
 	/**
-	 * @return mixed
+	 * @return \Monolog\Logger
 	 */
 	public static function getLogger() : mixed
 	{

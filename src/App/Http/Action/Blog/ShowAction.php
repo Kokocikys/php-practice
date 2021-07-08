@@ -3,12 +3,12 @@
 namespace App\Http\Action\Blog;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 
 class ShowAction
 {
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(ServerRequestInterface $request) : JsonResponse|HtmlResponse
     {
         $id = $request->getAttribute('id');
 

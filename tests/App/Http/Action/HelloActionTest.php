@@ -4,11 +4,11 @@ namespace Tests\App\Http\Action;
 
 use App\Http\Action\HelloAction;
 use PHPUnit\Framework\TestCase;
-use Zend\Diactoros\ServerRequest;
+use Laminas\Diactoros\ServerRequest;
 
 class HelloActionTest extends TestCase
 {
-	public function testGuest()
+	public function testGuest() : void
 	{
 		$action = new HelloAction();
 
@@ -19,7 +19,7 @@ class HelloActionTest extends TestCase
 		self::assertEquals( 'Hello, Guest!', $response->getBody()->getContents() );
 	}
 
-	public function testIlya()
+	public function testName() : void
 	{
 		$action = new HelloAction();
 

@@ -4,7 +4,7 @@ namespace Framework\Logger;
 
 use Monolog\Handler\StreamHandler;
 
-require $_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php';
+require $_SERVER[ "DOCUMENT_ROOT" ] . '/vendor/autoload.php';
 
 /**
  * Class Logger
@@ -17,7 +17,7 @@ class Logger
 	/**
 	 * @return mixed
 	 */
-	public static function getLogger()
+	public static function getLogger() : mixed
 	{
 		if ( !self::$instance ) {
 			self::configureInstance();

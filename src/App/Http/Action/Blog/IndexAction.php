@@ -2,11 +2,11 @@
 
 namespace App\Http\Action\Blog;
 
-use Zend\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 
 class IndexAction
 {
-    public function __invoke()
+    public function __invoke() : JsonResponse
     {
         return new JsonResponse([
             ['id' => 2, 'title' => 'The Second Post'],

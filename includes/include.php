@@ -1,1 +1,2 @@
-<?php echo "I was included!";
+<?php
+echo "I was included!";

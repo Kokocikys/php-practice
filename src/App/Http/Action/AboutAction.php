@@ -2,12 +2,12 @@
 
 namespace App\Http\Action;
 
-use Zend\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\HtmlResponse;
 
 class AboutAction
 {
-    public function __invoke()
-    {
-        return new HtmlResponse('I am a simple site!');
-    }
+	public function __invoke() : HtmlResponse
+	{
+		return new HtmlResponse( phpinfo( INFO_ALL ) );
+	}
 }

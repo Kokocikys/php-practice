@@ -53,3 +53,5 @@ $response = $response->withHeader( 'X-Developer', 'Kokocikys' );
 
 $emitter = new SapiEmitter();
 $emitter->emit( $response );
+
+//

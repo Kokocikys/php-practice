@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 use App\Http\Action;
 
@@ -38,9 +39,9 @@ try {
 	$action = $resolver->resolve( $result->getHandler() );
 	$response = $action( $request );
 	$log = new Logger();
-	$log->logLoadedPage( $_SERVER[ "REQUEST_URI" ] );
+	$log->logLoadedPage( $_SERVER[ 'REQUEST_URI' ] );
 }
-catch ( RequestNotMatchedException $e ) {
+catch ( RequestNotMatchedException $exception ) {
 	$response = new HtmlResponse( 'Undefined page', 404 );
 }
 

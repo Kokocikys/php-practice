@@ -8,14 +8,14 @@ use Laminas\Diactoros\Response\JsonResponse;
 
 class ShowAction
 {
-    public function __invoke(ServerRequestInterface $request) : JsonResponse|HtmlResponse
-    {
-        $id = $request->getAttribute('id');
+	public function __invoke( ServerRequestInterface $request ) : JsonResponse|HtmlResponse
+	{
+		$id = $request->getAttribute( 'id' );
 
-        if ($id > 2) {
-            return new HtmlResponse('Undefined page', 404);
-        }
+		if ( $id > 10 ) {
+			return new HtmlResponse( 'Undefined page', 404 );
+		}
 
-        return new JsonResponse(['id' => $id, 'title' => 'Post #' . $id]);
-    }
+		return new JsonResponse( [ 'id' => $id, 'title' => 'Post #' . $id ] );
+	}
 }

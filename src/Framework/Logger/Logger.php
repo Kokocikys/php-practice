@@ -6,17 +6,18 @@ use Monolog\Handler\StreamHandler;
 
 require $_SERVER[ "DOCUMENT_ROOT" ] . '/vendor/autoload.php';
 
-/**
- * Class Logger
- * @package Framework\Logger
- */
 class Logger
 {
-	protected static $instance;
+	protected static     $instance;
+	public static string $logName;
+	public static string $filePath;
 
-	/**
-	 * @return \Monolog\Logger
-	 */
+	public function __construct( string $logName, string $filePath = '/logs/info.log' )
+	{
+		self::$logName = $logName;
+		self::$filePath = $_SERVER[ 'DOCUMENT_ROOT' ] . $filePath;
+	}
+
 	public static function getLogger() : mixed
 	{
 		if ( !self::$instance ) {
@@ -28,19 +29,43 @@ class Logger
 	private static function configureInstance() : void
 	{
 		date_default_timezone_set( 'Europe/Minsk' );
-
-		$logger = new \Monolog\Logger( "PageLoad" );
-		$logger->pushHandler( new StreamHandler( $_SERVER[ 'DOCUMENT_ROOT' ] . "/logs/info.log", \Monolog\Logger::INFO ) );
+		$logger = new \Monolog\Logger( self::$logName );
+		$logger->pushHandler( new StreamHandler( self::$filePath ) );
 		self::$instance = $logger;
 	}
 
-	/**
-	 * @param $pageURL
-	 */
-	public function logLoadedPage( $pageURL ) : void
+	public function warning( $message, array $context = array() ) : void
 	{
-		self::getLogger()
-		    ->info( "Successful load", array( "Page" => $_SERVER[ "HTTP_HOST" ] . $pageURL ) )
-		;
+		self::getLogger()->warning( $message, $context );
+	}
+
+	public function debug( $message, array $context = array() ) : void
+	{
+		self::getLogger()->debug( $message, $context );
+	}
+
+	public function info( $message, array $context = array() ) : void
+	{
+		self::getLogger()->info( $message, $context );
+	}
+
+	public function notice( $message, array $context = array() ) : void
+	{
+		self::getLogger()->notice( $message, $context );
+	}
+
+	public function error( $message, array $context = array() ) : void
+	{
+		self::getLogger()->error( $message, $context );
+	}
+
+	public function critical( $message, array $context = array() ) : void
+	{
+		self::getLogger()->critical( $message, $context );
+	}
+
+	public function alert( $message, array $context = array() ) : void
+	{
+		self::getLogger()->alert( $message, $context );
 	}
 }

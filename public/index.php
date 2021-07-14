@@ -31,6 +31,10 @@ $resolver = new ActionResolver();
 
 $request = ServerRequestFactory::fromGlobals();
 
+### Logger
+
+$log = new Logger( 'LOG' );
+
 try {
 	$result = $router->match( $request );
 	foreach ( $result->getAttributes() as $attribute => $value ) {
@@ -38,11 +42,10 @@ try {
 	}
 	$action = $resolver->resolve( $result->getHandler() );
 	$response = $action( $request );
-	$log = new Logger();
-	$log->logLoadedPage( $_SERVER[ 'REQUEST_URI' ] );
 }
 catch ( RequestNotMatchedException $exception ) {
 	$response = new HtmlResponse( 'Undefined page', 404 );
+	$log->alert( 'Required non-existing page', array( 'page' => $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ] ) );
 }
 
 ### Postprocessing

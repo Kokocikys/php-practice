@@ -6,13 +6,16 @@ use App\Http\Action;
 use Framework\Http\ActionResolver;
 use Framework\Http\Router\Exception\RequestNotMatchedException;
 use Framework\Http\Router\AuraRouterAdapter;
-use Framework\Logger\Logger;
+
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 
 require $_SERVER[ 'DOCUMENT_ROOT' ] . '/vendor/autoload.php';
+date_default_timezone_set( 'Europe/Minsk' );
 
 ### Initialization
 
@@ -31,10 +34,6 @@ $resolver = new ActionResolver();
 
 $request = ServerRequestFactory::fromGlobals();
 
-### Logger
-
-$log = new Logger( 'LOG' );
-
 try {
 	$result = $router->match( $request );
 	foreach ( $result->getAttributes() as $attribute => $value ) {
@@ -45,7 +44,9 @@ try {
 }
 catch ( RequestNotMatchedException $exception ) {
 	$response = new HtmlResponse( 'Undefined page', 404 );
-	$log->alert( 'Required non-existing page', array( 'page' => $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ] ) );
+	$logger = new Logger( 'APP' );
+	$logger->pushHandler( new StreamHandler( $_SERVER[ 'DOCUMENT_ROOT' ] . '/logs/info.log' ) )
+	       ->info( 'Required non-existing page', array( 'page' => $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ] ) );
 }
 
 ### Postprocessing

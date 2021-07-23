@@ -12,6 +12,6 @@ class CabinetAction
 	{
 		$username = $request->getAttribute( BasicAuthMiddleware::ATTRIBUTE );
 
-		return new HtmlResponse( 'I am logged in as ' . $username );
+		return new HtmlResponse( 'Welcome, ' . $username . '!' );
 	}
 }

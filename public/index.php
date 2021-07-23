@@ -18,7 +18,10 @@ require $_SERVER[ 'DOCUMENT_ROOT' ] . '/vendor/autoload.php';
 
 $params = [
 	'debug' => true,
-	'users' => [ 'admin' => 'password' ],
+	'users' => [
+		'admin' => '123456',
+		'Kokocikys' => '1267',
+	],
 ];
 
 $aura = new Aura\Router\RouterContainer();

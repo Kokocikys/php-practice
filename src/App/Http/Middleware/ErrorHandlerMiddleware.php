@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Psr\Http\Message\ServerRequestInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response;
 use Throwable;
 
 class ErrorHandlerMiddleware
@@ -16,7 +17,7 @@ class ErrorHandlerMiddleware
 		$this->debug = $debug;
 	}
 
-	public function __invoke( ServerRequestInterface $request, callable $next ) : JsonResponse|HtmlResponse
+	public function __invoke( ServerRequestInterface $request, callable $next ) : Response|JsonResponse|HtmlResponse
 	{
 		try {
 			return $next( $request );

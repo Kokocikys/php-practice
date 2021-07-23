@@ -19,7 +19,7 @@ require $_SERVER[ 'DOCUMENT_ROOT' ] . '/vendor/autoload.php';
 $params = [
 	'debug' => true,
 	'users' => [
-		'admin' => '123456',
+		'admin'     => '123456',
 		'Kokocikys' => '1267',
 	],
 ];
@@ -41,8 +41,8 @@ $resolver = new MiddlewareResolver();
 $app = new Application( $resolver, new Middleware\NotFoundHandler() );
 
 $app->pipe( new Middleware\ErrorHandlerMiddleware( $params[ 'debug' ] ) );
-$app->pipe( new Middleware\CredentialsMiddleware() );
-$app->pipe( new Middleware\ProfilerMiddleware() );
+$app->pipe( Middleware\CredentialsMiddleware::class );
+$app->pipe( Middleware\ProfilerMiddleware::class );
 $app->pipe( new Framework\Http\Middleware\RouteMiddleware( $router ) );
 $app->pipe( new Framework\Http\Middleware\DispatchMiddleware( $resolver ) );
 

@@ -2,10 +2,13 @@
 
 namespace Framework\Http\Pipeline;
 
+use Framework\Http\Pipeline\Exception\UnknownMiddlewareTypeException;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
 use ReflectionObject;
+
 use function count;
 use function is_array;
 use function is_object;

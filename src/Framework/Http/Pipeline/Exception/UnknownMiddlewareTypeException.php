@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Http\Pipeline;
+namespace Framework\Http\Pipeline\Exception;
 
 use InvalidArgumentException;
 use JetBrains\PhpStorm\Pure;

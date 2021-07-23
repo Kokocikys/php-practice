@@ -112,7 +112,7 @@ class MiddlewareResolverTest extends TestCase
 			new NotFoundMiddleware()
 		);
 
-		self::assertEquals( [ 'dummy' ], $response->getHeader( 'X-Dummy' ) );
+		self::assertEquals( [ 'Dummy' ], $response->getHeader( 'X-Dummy' ) );
 		self::assertEquals( [ $value ], $response->getHeader( 'X-Header' ) );
 	}
 }

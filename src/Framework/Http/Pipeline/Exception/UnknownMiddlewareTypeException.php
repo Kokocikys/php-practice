@@ -4,6 +4,8 @@ namespace Framework\Http\Pipeline\Exception;
 
 use InvalidArgumentException;
 use JetBrains\PhpStorm\Pure;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 class UnknownMiddlewareTypeException extends InvalidArgumentException
 {
@@ -11,6 +13,9 @@ class UnknownMiddlewareTypeException extends InvalidArgumentException
 
 	#[Pure] public function __construct( $type )
 	{
+		$logger = new Logger( 'Exception' );
+		$logger->pushHandler( new StreamHandler( $_SERVER[ 'DOCUMENT_ROOT' ] . '/logs/exception.log' ) )
+		       ->error( 'Exception', array( 'Name' => 'UnknownMiddlewareTypeException', 'Type' => $type ) );
 		parent::__construct( 'Unknown middleware type' );
 		$this->type = $type;
 	}

@@ -7,8 +7,8 @@ use Laminas\Diactoros\Response\HtmlResponse;
 
 class NotFoundHandler
 {
-    public function __invoke(ServerRequestInterface $request) : HtmlResponse
-    {
-        return new HtmlResponse('Undefined page', 404);
-    }
+	public function __invoke( ServerRequestInterface $request ) : HtmlResponse
+	{
+		return new HtmlResponse( 'Undefined page', 404 );
+	}
 }

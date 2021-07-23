@@ -29,9 +29,6 @@ class BasicAuthMiddleware
 			}
 		}
 
-		return $response
-			->withStatus( 401 )
-			->withHeader( 'WWW-Authenticate', 'Basic realm=Restricted area' )
-			;
+		return $response->withStatus( 401 )->withHeader( 'WWW-Authenticate', 'Basic realm=Restricted area' );
 	}
 }

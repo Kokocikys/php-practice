@@ -1,6 +1,6 @@
 {
 	"name" : "kokocikys/php-practice.my",
-	"description" : "Composer practice",
+	"description" : "PHP practice",
 	"minimum-stability" : "stable",
 	"license" : "proprietary",
 	"authors" : [

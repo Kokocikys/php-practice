@@ -2,8 +2,9 @@
 
 namespace Framework\Http\Router\Exception;
 
-use JetBrains\PhpStorm\Pure;
 use LogicException;
+
+use JetBrains\PhpStorm\Pure;
 use Psr\Http\Message\ServerRequestInterface;
 
 class RequestNotMatchedException extends LogicException

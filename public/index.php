@@ -19,7 +19,7 @@ require $_SERVER[ 'DOCUMENT_ROOT' ] . '/vendor/autoload.php';
 $params = [
 	'debug' => true,
 	'users' => [
-		'admin'     => '123456',
+		'admin'     => 'admin',
 		'Kokocikys' => '1267',
 	],
 ];
